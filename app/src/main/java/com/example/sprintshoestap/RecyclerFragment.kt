@@ -1,10 +1,11 @@
 package com.example.sprintshoestap
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.example.sprintshoestap.databinding.FragmentRecyclerBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +18,8 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class RecyclerFragment : Fragment() {
+   private lateinit var binding: FragmentRecyclerBinding
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -30,12 +33,24 @@ class RecyclerFragment : Fragment() {
     }
 
     override fun onCreateView(
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recycler, container, false)
+        binding = FragmentRecyclerBinding.inflate(LayoutInflater.from(activity))
+        initAdapter()
+        return (binding.root)
     }
+
+fun initAdapter(){
+    val adapter =Adapter()
+    val listadoZapatosVentas = ZapatoVenta.zapatos
+    adapter.setData(listadoZapatosVentas)
+    //adapter.callback = this
+    binding.recyclerView.adapter =adapter
+
+}
+
 
     companion object {
         /**

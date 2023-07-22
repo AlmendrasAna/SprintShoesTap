@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.transform.CircleCropTransformation
 import com.example.sprintshoestap.databinding.ItemZapatoBinding
 
 class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
@@ -26,11 +27,11 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val pais = zapatos[position]
-        holder.bind(pais)
+        val zapato = zapatos[position]
+        holder.bind(zapato)
     }
 
-    fun setData(paises: MutableList<Zapato>) {
+    fun setData(zapatos: MutableList<Zapato>) {
         this.zapatos = zapatos.toMutableList()
     }
 
@@ -38,7 +39,10 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
         fun bind(zapato: Zapato) {
             binding.nombreTxt.text = zapato.nombre
-            binding.imaZapato.load(zapato.url)
+            binding.imaZapato.load(zapato.url){    crossfade(true)
+                placeholder(R.drawable.ic_launcher_background)
+                transformations(CircleCropTransformation())}
+
             binding.precioTxt.text = zapato.precio.toString()
 
 

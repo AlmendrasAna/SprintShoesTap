@@ -7,6 +7,12 @@ class ZapatoVenta {
         val zapatos = mutableListOf<Zapato>().apply {
             add(Zapato("zapato feo", "https://i.postimg.cc/cCtv5gZP/frut2.png",200000 ))
             add(Zapato("zapato ReFeo", "https://postimg.cc/fSZWVbVv",250000 ))
+            add(Zapato("zapato feo", "https://i.postimg.cc/cCtv5gZP/frut2.png",200000 ))
+            add(Zapato("zapato ReFeo", "https://postimg.cc/fSZWVbVv",250000 ))
+            add(Zapato("zapato feo", "https://i.postimg.cc/cCtv5gZP/frut2.png",200000 ))
+            add(Zapato("zapato ReFeo", "https://postimg.cc/fSZWVbVv",250000 ))
+            add(Zapato("zapato feo", "https://i.postimg.cc/cCtv5gZP/frut2.png",200000 ))
+            add(Zapato("zapato ReFeo", "https://postimg.cc/fSZWVbVv",250000 ))
         }
 
 
