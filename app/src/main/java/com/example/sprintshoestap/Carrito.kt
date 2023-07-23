@@ -1,4 +1,4 @@
 package com.example.sprintshoestap
 
-class Carrito {
+data class Carrito(val nombre : String ) {
 }
