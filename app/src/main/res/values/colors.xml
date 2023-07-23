@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="verde_oliva">#FFA6A26F</color>
+    <color name="verde_paco">#FF736C4C</color>
+    <color name="rosa_palo">#FFA69580</color>
+    <color name="rosa_claro">#FFF2E2CE</color>
+    <color name="ladrillo">#FF733E20</color>
+    <color name="verde_letra">#4A4632</color>
+
 </resources>

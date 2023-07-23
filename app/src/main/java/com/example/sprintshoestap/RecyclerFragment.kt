@@ -1,10 +1,12 @@
 package com.example.sprintshoestap
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.sprintshoestap.databinding.FragmentRecyclerBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -17,7 +19,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [RecyclerFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class RecyclerFragment : Fragment() {
+class RecyclerFragment : Fragment(), Adapter.ZapatosCallBack {
    private lateinit var binding: FragmentRecyclerBinding
 
     // TODO: Rename and change types of parameters
@@ -46,7 +48,7 @@ fun initAdapter(){
     val adapter =Adapter()
     val listadoZapatosVentas = ZapatoVenta.zapatos
     adapter.setData(listadoZapatosVentas)
-    //adapter.callback = this
+    adapter.callback = this
     binding.recyclerView.adapter =adapter
 
 }
@@ -71,4 +73,17 @@ fun initAdapter(){
                 }
             }
     }
+
+    override fun showInfoFragmen(zapato: Zapato) {
+        val bundle = Bundle()
+        bundle.putString("nombre", zapato.nombre.toString())
+        bundle.putString("url", zapato.url.toString())
+        bundle.putString("precio", zapato.precio.toString())
+        findNavController().navigate(R.id.action_recyclerFragment_to_infoFragment,bundle)
+        Log.e("bind: ",zapato.nombre )
+
+
+    }
+
+
 }

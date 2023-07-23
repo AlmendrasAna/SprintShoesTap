@@ -1,14 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/textStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/imaInfoZapato"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/rosa_claro"
+        android:padding="8dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <TextView
+        android:id="@+id/nombreInfoTxt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#B5F2E2CE"
+        android:fontFamily="cursive"
+        android:gravity="bottom|center|center_horizontal"
+        android:text="nombreInfoTxt"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/imaInfoZapato"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imaInfoZapato"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/precioInfoTxt"
+        style="@style/textStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center|center_vertical"
+        android:text="precioInfoTxt"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/agregarCarritoB2"
+        app:layout_constraintEnd_toStartOf="@+id/agregarCarritoB"
+        app:layout_constraintStart_toStartOf="@+id/imaInfoZapato"
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.73" />
+
+    <Button
+        android:id="@+id/agregarCarritoB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:backgroundTint="@color/ladrillo"
+        android:drawableStart="@drawable/carritomas"
+        android:drawableTint="@color/rosa_claro"
+        android:elevation="3dp"
+        android:text="Agregar al carrito "
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/rosa_claro"
+        app:cornerRadius="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline7"
+        app:strokeColor="#881C1C" />
+
+    <Button
+        android:id="@+id/agregarCarritoB2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:backgroundTint="@color/verde_oliva"
+        android:drawableStart="@drawable/carrito"
+        android:drawableTint="@color/rosa_claro"
+        android:elevation="3dp"
+        android:text="Ir al carrito "
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/rosa_claro"
+        app:cornerRadius="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/agregarCarritoB"
+        app:layout_constraintStart_toStartOf="@+id/agregarCarritoB"
+        app:layout_constraintTop_toBottomOf="@+id/agregarCarritoB"
+        app:strokeColor="#881C1C" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
