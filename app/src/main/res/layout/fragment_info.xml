@@ -50,7 +50,7 @@
         android:gravity="center|center_vertical"
         android:text="precioInfoTxt"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/agregarCarritoB2"
+        app:layout_constraintBottom_toBottomOf="@+id/irCarrito"
         app:layout_constraintEnd_toStartOf="@+id/agregarCarritoB"
         app:layout_constraintStart_toStartOf="@+id/imaInfoZapato"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
@@ -80,7 +80,7 @@
         app:strokeColor="#881C1C" />
 
     <Button
-        android:id="@+id/agregarCarritoB2"
+        android:id="@+id/irCarrito"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 

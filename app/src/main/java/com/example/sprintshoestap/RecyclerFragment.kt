@@ -20,7 +20,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class RecyclerFragment : Fragment(), Adapter.ZapatosCallBack {
-   private lateinit var binding: FragmentRecyclerBinding
+    private lateinit var binding: FragmentRecyclerBinding
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -36,22 +36,24 @@ class RecyclerFragment : Fragment(), Adapter.ZapatosCallBack {
 
     override fun onCreateView(
 
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRecyclerBinding.inflate(LayoutInflater.from(activity))
         initAdapter()
         return (binding.root)
     }
 
-fun initAdapter(){
-    val adapter =Adapter()
-    val listadoZapatosVentas = ZapatoVenta.zapatos
-    adapter.setData(listadoZapatosVentas)
-    adapter.callback = this
-    binding.recyclerView.adapter =adapter
+    fun initAdapter() {
+        val adapter = Adapter()
+        val listadoZapatosVentas = ZapatoVenta.zapatos
+        adapter.setData(listadoZapatosVentas)
+        adapter.callback = this
+        binding.recyclerView.adapter = adapter
 
-}
+        binding.carritoCompras2B.setOnClickListener {
+            findNavController().navigate(R.id.action_recyclerFragment_to_carritoFragment)
+        }
+    }
 
 
     companion object {
@@ -65,13 +67,12 @@ fun initAdapter(){
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RecyclerFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        fun newInstance(param1: String, param2: String) = RecyclerFragment().apply {
+            arguments = Bundle().apply {
+                putString(ARG_PARAM1, param1)
+                putString(ARG_PARAM2, param2)
             }
+        }
     }
 
     override fun showInfoFragmen(zapato: Zapato) {
@@ -79,11 +80,8 @@ fun initAdapter(){
         bundle.putString("nombre", zapato.nombre.toString())
         bundle.putString("url", zapato.url.toString())
         bundle.putString("precio", zapato.precio.toString())
-        findNavController().navigate(R.id.action_recyclerFragment_to_infoFragment,bundle)
-        Log.e("bind: ",zapato.nombre )
-
-
+        findNavController().navigate(R.id.action_recyclerFragment_to_infoFragment, bundle)
+        Log.e("bind: ", zapato.nombre)
     }
-
 
 }
