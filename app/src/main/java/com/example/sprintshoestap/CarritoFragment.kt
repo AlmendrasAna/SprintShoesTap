@@ -1,16 +1,13 @@
 package com.example.sprintshoestap
-
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import com.example.sprintshoestap.CarritoCompra.Companion.crearListaCarrito
 import com.example.sprintshoestap.databinding.FragmentCarritoBinding
-import com.example.sprintshoestap.databinding.FragmentRecyclerBinding
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +20,6 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class CarritoFragment : Fragment() {
-    private lateinit var mSharedPreferences: SharedPreferences
     private lateinit var binding: FragmentCarritoBinding
 
     // TODO: Rename and change types of parameters
@@ -45,33 +41,27 @@ class CarritoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCarritoBinding.inflate(LayoutInflater.from(activity))
-        mSharedPreferences = requireActivity().applicationContext.getSharedPreferences("cookie", Context.MODE_PRIVATE)
 
         initAdapter()
+
         return (binding.root)
     }
 
     fun initAdapter() {
         val adapter = AdapterCarrito()
+        //Log.e("lol", "initAdapter: ${CarritoCompra.zapatos}")
+        //binding.recyclerCarrito.getAdapter()?.notifyItemInserted(ZapatoVenta.zapatos.size);
         val listadoZapatosVentas = crearListaCarrito()
+        binding.recyclerCarrito.getAdapter()?.notifyItemInserted(ZapatoVenta.zapatos.size);
+
+
         adapter.setData(listadoZapatosVentas)
 
         binding.recyclerCarrito.adapter = adapter
 
 
     }
-    fun crearListaCarrito(): MutableList<Zapato>{
-        val zapatos = ZapatoVenta.zapatos
-        val carrito = mutableListOf<Zapato>()
-        val nombres = mSharedPreferences.all
 
-        for (z in zapatos)
-        {
-            if (nombres.containsKey(z.nombre))carrito.add(z)
-        }
-
-        return carrito
-    }
 
 
     companion object {

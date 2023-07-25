@@ -82,6 +82,7 @@ class RecyclerFragment : Fragment(), Adapter.ZapatosCallBack {
         bundle.putString("precio", zapato.precio.toString())
         findNavController().navigate(R.id.action_recyclerFragment_to_infoFragment, bundle)
         Log.e("bind: ", zapato.nombre)
+
     }
 
 }

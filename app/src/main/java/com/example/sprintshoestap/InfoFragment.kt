@@ -1,6 +1,6 @@
 package com.example.sprintshoestap
 
-import android.content.Context
+
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,8 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import coil.load
 import com.example.sprintshoestap.databinding.FragmentInfoBinding
-import android.content.SharedPreferences
-import kotlinx.coroutines.SupervisorJob
+import com.example.sprintshoestap.ZapatoVenta.Companion.zapatos
+import com.example.sprintshoestap.databinding.FragmentCarritoBinding
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +26,6 @@ private const val ARG_PARAM2 = "param2"
 class InfoFragment : Fragment() {
 
     private lateinit var binding: FragmentInfoBinding
-    private lateinit var mSharedPreferences: SharedPreferences
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -47,12 +47,11 @@ class InfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        mSharedPreferences = requireActivity().applicationContext.getSharedPreferences("cookie", Context.MODE_PRIVATE)
-
         binding = FragmentInfoBinding.inflate(LayoutInflater.from(activity))
         initAdapter()
                binding.agregarCarritoB.setOnClickListener{
-                mSharedPreferences.edit().putString(param1,param1).apply()
+                SharedApp.prefs.agregarPrefs(param1.toString())
+
                    Log.e("bind: ","baandfsdfa" )
 
         }

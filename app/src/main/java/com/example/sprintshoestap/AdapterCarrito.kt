@@ -36,6 +36,7 @@ class AdapterCarrito : RecyclerView.Adapter<AdapterCarrito.ViewHolder>() {
 
     fun setData(zapatos: MutableList<Zapato>) {
         this.zapatos = zapatos.toMutableList()
+        notifyDataSetChanged()
     }
 
     inner class ViewHolder(val binding: ItemCarritoBinding) : RecyclerView.ViewHolder(binding.root) {
