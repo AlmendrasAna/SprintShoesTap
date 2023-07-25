@@ -53,6 +53,7 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
             })
 
 
+
         }
 
     }

@@ -1,7 +1,5 @@
 package com.example.sprintshoestap
 
-import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.example.sprintshoestap.databinding.ItemCarritoBinding
-import com.example.sprintshoestap.databinding.ItemZapatoBinding
 
 class AdapterCarrito : RecyclerView.Adapter<AdapterCarrito.ViewHolder>() {
 
-    var zapatos = mutableListOf<Zapato>()
+    var carritoZapatoParaVender = mutableListOf<Zapato>()
 
-
+    var callback: EliminarItemCarrito? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,24 +23,26 @@ class AdapterCarrito : RecyclerView.Adapter<AdapterCarrito.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return zapatos.size
+        return carritoZapatoParaVender.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val zapato = zapatos[position]
+        val zapato = carritoZapatoParaVender[position]
         holder.bind(zapato)
     }
 
     fun setData(zapatos: MutableList<Zapato>) {
-        this.zapatos = zapatos.toMutableList()
+        this.carritoZapatoParaVender = zapatos.toMutableList()
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(val binding: ItemCarritoBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(val binding: ItemCarritoBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(zapato: Zapato) {
             binding.nombreZapatoCarritoTxt.text = zapato.nombre
-            binding.imaZapatoCarrito.load(zapato.url){    crossfade(true)
+            binding.imaZapatoCarrito.load(zapato.url) {
+                crossfade(true)
                 transformations(CircleCropTransformation())
                 placeholder(R.drawable.logo)
 
@@ -53,12 +52,23 @@ class AdapterCarrito : RecyclerView.Adapter<AdapterCarrito.ViewHolder>() {
 
 
 
+            binding.eliminarZaparoB.setOnClickListener(View.OnClickListener {
+
+                callback?.eliminarItem(zapato.nombre)
+                carritoZapatoParaVender.removeAt(adapterPosition)
+                notifyItemRemoved(adapterPosition)
+            })
 
         }
 
     }
 
+    interface EliminarItemCarrito {
+        fun eliminarItem(kay : String)
 
-
-
+    }
 }
+
+
+
+
