@@ -13,7 +13,11 @@ fun agregarPrefs(kayPrefs: String){
     mSharedPreferences.edit().putString(kayPrefs,kayPrefs).apply()
 }
 
-    fun clean(kayEliminar : String) {
+    fun clean(){
+        mSharedPreferences.edit().clear().apply()
+    }
+
+    fun removeItem(kayEliminar : String) {
     mSharedPreferences.edit().remove(kayEliminar).apply()
 }
     fun showAll(): String {

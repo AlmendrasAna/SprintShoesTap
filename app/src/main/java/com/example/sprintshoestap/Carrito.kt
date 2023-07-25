@@ -15,7 +15,7 @@ class CarritoCompra()
         val carritoZapatos = crearListaCarrito()
 
         fun eliminarItemCarrito(kayEliminar:String){
-          SharedApp.prefs.clean(kayEliminar)
+          SharedApp.prefs.removeItem(kayEliminar)
                 }
         fun crearListaCarrito(): MutableList<Zapato>{
 

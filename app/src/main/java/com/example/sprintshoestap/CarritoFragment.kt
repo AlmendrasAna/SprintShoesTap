@@ -59,7 +59,11 @@ class CarritoFragment : Fragment(), AdapterCarrito.EliminarItemCarrito {
         adapter.callback = this
         binding.recyclerCarrito.adapter = adapter
 
-
+        binding.eliminarCarritoB.setOnClickListener {
+            SharedApp.prefs.clean()
+            adapter.carritoZapatoParaVender.clear()
+            adapter.notifyDataSetChanged()
+        }
     }
 
 
@@ -84,7 +88,7 @@ class CarritoFragment : Fragment(), AdapterCarrito.EliminarItemCarrito {
     }
 
     override fun eliminarItem(kay: String) {
-        SharedApp.prefs.clean(kay)
+        SharedApp.prefs.removeItem(kay)
 
     }
 }
