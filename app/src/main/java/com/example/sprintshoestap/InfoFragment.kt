@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import coil.load
 import com.example.sprintshoestap.databinding.FragmentInfoBinding
 import com.example.sprintshoestap.ZapatoVenta.Companion.zapatos
@@ -52,6 +53,9 @@ class InfoFragment : Fragment() {
                binding.agregarCarritoB.setOnClickListener{
                 SharedApp.prefs.agregarPrefs(param1.toString())
 
+                   binding.irCarrito.setOnClickListener{
+                       findNavController().navigate(R.id.action_infoFragment_to_carritoFragment)
+                   }
                    Log.e("bind: ","baandfsdfa" )
 
         }

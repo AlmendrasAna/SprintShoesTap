@@ -89,6 +89,5 @@ class CarritoFragment : Fragment(), AdapterCarrito.EliminarItemCarrito {
 
     override fun eliminarItem(kay: String) {
         SharedApp.prefs.removeItem(kay)
-
     }
 }
